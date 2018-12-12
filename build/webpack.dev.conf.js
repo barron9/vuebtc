@@ -12,7 +12,6 @@ const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
-
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
@@ -23,11 +22,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   // these devServer options should be customized in /config/index.js
   devServer: {
     disableHostCheck: true,   // That solved it
-headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
-    },	  
+	headers: {
+      'Access-Control-Allow-Headers': '*',
+    "Access-Control-Allow-Origin": "http://localhost:8080"
+		
+    },
+	  
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [

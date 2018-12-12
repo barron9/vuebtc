@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
-<h1>{{this.xxx}}</h1>
+{{this.xxx.data}}
 
   </div>
 </template>
@@ -13,22 +11,17 @@ export default {
   name: 'App',
  data() {
     return {
-      xxx: 0
+property:null,
+      xxx: '***'
     }
   },
 created() {
-    this.property = 'Example property update.'
-    console.log('propertyComputed will update, as this.property is now reactive.')
-axios.get('https://api.coindesk.com/v1/bpi/currentprice.json', {
-  method: 'get',
-  headers: {
-            'Content-Type': 'application/json',
-        },
- mode:'no-cors',
-  body:null
-})
+var self= this
+    self.property = 'Example property update.'
+    console.log('starting pull')
+axios.get('http://127.0.0.1:3000' )
   .then(function(response) {
-   this.xxx= (response.data.bpi);
+   self.xxx= (response);
 
   })
 
